@@ -16,11 +16,6 @@ class TodoListController: UITableViewController {
         super.viewDidLoad()
         self.items = [["name": "fujmoto ryo", "age": "32", "from": "oita"],
                       ["name": "iwagashira yukari", "age": "37", "from": "nagasaki"]]
-
-        // Do any additional setup after loading the view, typically from a nib.
-        // let view = UINib(nibName: "SimpleView", bundle: nil).instantiateWithOwner(self, options: nil).first as? UIView
-
-        // self.loadTemplate()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,11 +23,9 @@ class TodoListController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // func loadTemplate() {
-    //     let view:UIView = UINib(nibName: "SampleView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! UIView
-    //     self.view.addSubview(view)
-    // }
-
+    //--------------------------------------------------------------//
+    // MARK: - tabledata -
+    //--------------------------------------------------------------//
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 100
     }
@@ -46,7 +39,7 @@ class TodoListController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        let cell = self.tableView.dequeueReusableCellWithIdentifier(Const.todoListCellIdentifier) as! TodoListCell
         self.configureCell(cell, atIndexPath: indexPath)
         return cell
     }
@@ -59,10 +52,13 @@ class TodoListController: UITableViewController {
         // self.navigationController?.pushViewController(con, animated: true)
     }
     
-    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+    func configureCell(cell: TodoListCell, atIndexPath indexPath: NSIndexPath) {
         // let item = self.items[indexPath.row] as MWFeedItem
         let item = self.items[indexPath.row] as! Dictionary<String, String>
-        cell.textLabel?.text = item["name"]
+        cell.todoListName?.text = item["name"]
+        cell.todoListName?.font = UIFont.systemFontOfSize(14.0)
+        cell.todoListName?.numberOfLines = 0
+        // cell.textLabel?.text = item["name"]
         cell.textLabel?.font = UIFont.systemFontOfSize(14.0)
         cell.textLabel?.numberOfLines = 0
         
