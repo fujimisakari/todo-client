@@ -20,4 +20,10 @@ struct Const {
     // MARK: - Identifier -
     //--------------------------------------------------------------//
     static let todoListCellIdentifier = "todoListCell"
+    static let todoItemCellIdentifier = "todoItemCell"
+
+    //--------------------------------------------------------------//
+    // MARK: - Segue -
+    //--------------------------------------------------------------//
+    static let toTodoItemBySegue = "toTodoItem"
 }
