@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodoItemCell: UITableViewCell {
+class TodoItemViewCell: UITableViewCell {
 
     @IBOutlet weak var todoNameLabel: UILabel!
 

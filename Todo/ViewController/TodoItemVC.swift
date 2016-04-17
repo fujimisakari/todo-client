@@ -40,7 +40,7 @@ class TodoItemController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier(Const.todoItemCellIdentifier)!
-        if let todoItemCell = cell as? TodoItemCell {
+        if let todoItemCell = cell as? TodoItemViewCell {
             self.configureCell(todoItemCell, atIndexPath: indexPath)
         }
         return cell
@@ -54,7 +54,7 @@ class TodoItemController: UITableViewController {
         // self.navigationController?.pushViewController(con, animated: true)
     }
 
-    func configureCell(cell: TodoItemCell, atIndexPath indexPath: NSIndexPath) {
+    func configureCell(cell: TodoItemViewCell, atIndexPath indexPath: NSIndexPath) {
         if let item = self.items[indexPath.row] as? Dictionary<String, String> {
             cell.todoNameLabel?.text = item["name"]
             cell.todoNameLabel?.font = UIFont.systemFontOfSize(14.0)

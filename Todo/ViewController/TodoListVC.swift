@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import RealmSwift
 
 
 class TodoListController: UITableViewController {
@@ -66,7 +67,7 @@ class TodoListController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier(Const.todoListCellIdentifier)!
-        if let todoListCell = cell as? TodoListCell {
+        if let todoListCell = cell as? TodoListViewCell {
             self.configureCell(todoListCell, atIndexPath: indexPath)
         }
         return cell
@@ -92,7 +93,7 @@ class TodoListController: UITableViewController {
         }
     }
 
-    func configureCell(cell: TodoListCell, atIndexPath indexPath: NSIndexPath) {
+    func configureCell(cell: TodoListViewCell, atIndexPath indexPath: NSIndexPath) {
         // let item = self.items[indexPath.row] as MWFeedItem
         if let item = self.items[indexPath.row] as? Dictionary<String, String> {
             cell.todoListName?.text = item["name"]
