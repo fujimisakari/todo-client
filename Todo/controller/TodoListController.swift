@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+
 
 class TodoListController: UITableViewController {
 
@@ -16,6 +19,29 @@ class TodoListController: UITableViewController {
         super.viewDidLoad()
         self.items = [["name": "fujmoto ryo", "age": "32", "from": "oita"],
                       ["name": "iwagashira yukari", "age": "37", "from": "nagasaki"]]
+
+        Alamofire.request(.GET, "http://localhost:8000/api/todolist")
+                 .responseJSON { response in
+                     // print(response.request)  // original URL request
+                     // print(response.response) // URL response
+                     // print(response.data)     // server data
+                     // print(response.result)   // result of response serialization
+
+                     // if let result_json = response.result.value {
+                     //     print("JSON: \(result_json)")
+                     // }
+                     guard let object = response.result.value else {
+                         return
+                     }
+
+                     let json = JSON(object)
+                     json["todolist_list"].forEach { (_, json) in
+                         print(json["item_list"])
+                         print(json["name"].string)
+                         print(json["name"].string)
+                         // print(json["todolist_list"][0]["description"].string)
+                     }
+                 }
     }
 
     override func didReceiveMemoryWarning() {

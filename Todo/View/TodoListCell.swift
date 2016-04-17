@@ -9,13 +9,13 @@
 import UIKit
 
 class TodoListCell: UITableViewCell {
-    
+
     @IBOutlet weak var todoListName: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
     }
