@@ -7,15 +7,23 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TodoItemController: UITableViewController {
 
-    var items = []
+    var items: [TodoItemModel] = []
+    var todoListId: Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.items = [["name": "python"],
-                      ["name": "swift"]]
+        let realm = try! Realm()
+        try! realm.write {
+            for todoItem in realm.objects(TodoItemModel) {
+                if todoItem.todoListId == todoListId {
+                    self.items.append(todoItem)
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,16 +55,11 @@ class TodoItemController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // let item = self.items[indexPath.row] as MWFeedItem
-        // let con = KINWebBrowserViewController()
-        // let URL = NSURL(string: item.link)
-        // con.loadURL(URL)
-        // self.navigationController?.pushViewController(con, animated: true)
     }
 
     func configureCell(cell: TodoItemViewCell, atIndexPath indexPath: NSIndexPath) {
-        if let item = self.items[indexPath.row] as? Dictionary<String, String> {
-            cell.todoNameLabel?.text = item["name"]
+        if let todoItem: TodoItemModel = self.items[indexPath.row] {
+            cell.todoNameLabel?.text = todoItem.text
             cell.todoNameLabel?.font = UIFont.systemFontOfSize(14.0)
             cell.todoNameLabel?.numberOfLines = 0
         }
