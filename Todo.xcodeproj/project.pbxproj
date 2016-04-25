@@ -23,6 +23,9 @@
 		7BEEA02F1CC3582400D00A4E /* TodoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEEA02D1CC3582400D00A4E /* TodoListVC.swift */; };
 		7BEEA0321CC3583400D00A4E /* TodoListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEEA0301CC3583400D00A4E /* TodoListViewCell.swift */; };
 		7BEEA0331CC3583400D00A4E /* TodoItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEEA0311CC3583400D00A4E /* TodoItemViewCell.swift */; };
+		7BEEA0361CCE86D300D00A4E /* SwiftTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BEEA0351CCE86D300D00A4E /* SwiftTask.framework */; };
+		7BEEA0371CCE86FD00D00A4E /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BEE9FB51CC2CED500D00A4E /* Realm.framework */; };
+		7BEEA0381CCE871C00D00A4E /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BEE9FB71CC2CF7700D00A4E /* RealmSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,8 @@
 		7BEEA02D1CC3582400D00A4E /* TodoListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoListVC.swift; path = Todo/ViewController/TodoListVC.swift; sourceTree = SOURCE_ROOT; };
 		7BEEA0301CC3583400D00A4E /* TodoListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListViewCell.swift; sourceTree = "<group>"; };
 		7BEEA0311CC3583400D00A4E /* TodoItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoItemViewCell.swift; sourceTree = "<group>"; };
+		7BEEA0341CCE843C00D00A4E /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		7BEEA0351CCE86D300D00A4E /* SwiftTask.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftTask.framework; path = Carthage/Build/iOS/SwiftTask.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +79,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BEEA0381CCE871C00D00A4E /* RealmSwift.framework in Frameworks */,
+				7BEEA0371CCE86FD00D00A4E /* Realm.framework in Frameworks */,
+				7BEEA0361CCE86D300D00A4E /* SwiftTask.framework in Frameworks */,
 				7B24DBC41CC29FEF0070B04A /* SwiftyJSON.framework in Frameworks */,
 				7B24DBC51CC29FEF0070B04A /* Alamofire.framework in Frameworks */,
 			);
@@ -148,6 +156,7 @@
 				7BEEA0151CC3388000D00A4E /* Assets.xcassets */,
 				7BEEA0181CC338A900D00A4E /* LaunchScreen.storyboard */,
 				7BEEA0171CC338A900D00A4E /* Main.storyboard */,
+				7BEEA0341CCE843C00D00A4E /* MyPlayground.playground */,
 			);
 			path = Todo;
 			sourceTree = "<group>";
@@ -191,6 +200,7 @@
 		93329B93F465EF2285B97995 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7BEEA0351CCE86D300D00A4E /* SwiftTask.framework */,
 				7BEE9FB71CC2CF7700D00A4E /* RealmSwift.framework */,
 				7BEE9FB51CC2CED500D00A4E /* Realm.framework */,
 				7B24DBC21CC29FEF0070B04A /* SwiftyJSON.framework */,
@@ -337,6 +347,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftTask.framework",
 			);
 			outputPaths = (
 			);
