@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B181E291CD99614006439F9 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B181E281CD99614006439F9 /* ObjectMapper.framework */; };
 		7B24DBC41CC29FEF0070B04A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B24DBC21CC29FEF0070B04A /* SwiftyJSON.framework */; };
 		7B24DBC51CC29FEF0070B04A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B24DBC31CC29FEF0070B04A /* Alamofire.framework */; };
 		7BD1F9601C32FA3900FD1D53 /* TodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD1F95F1C32FA3900FD1D53 /* TodoTests.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B181E281CD99614006439F9 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		7B24DBC21CC29FEF0070B04A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		7B24DBC31CC29FEF0070B04A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		7BD1F9471C32FA3900FD1D53 /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B181E291CD99614006439F9 /* ObjectMapper.framework in Frameworks */,
 				7BEEA0381CCE871C00D00A4E /* RealmSwift.framework in Frameworks */,
 				7BEEA0371CCE86FD00D00A4E /* Realm.framework in Frameworks */,
 				7BEEA0361CCE86D300D00A4E /* SwiftTask.framework in Frameworks */,
@@ -200,6 +203,7 @@
 		93329B93F465EF2285B97995 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7B181E281CD99614006439F9 /* ObjectMapper.framework */,
 				7BEEA0351CCE86D300D00A4E /* SwiftTask.framework */,
 				7BEE9FB71CC2CF7700D00A4E /* RealmSwift.framework */,
 				7BEE9FB51CC2CED500D00A4E /* Realm.framework */,
@@ -348,12 +352,13 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftTask.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n\nif which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 

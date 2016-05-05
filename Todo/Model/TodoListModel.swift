@@ -7,29 +7,41 @@
 //
 
 import Foundation
-import SwiftyJSON
+import ObjectMapper
 import RealmSwift
+import SwiftyJSON
 
 
-class TodoListModel: Object {
+class TodoListModel: Object, Mappable {
     dynamic var id = 0
     dynamic var name = ""
     dynamic var desc = ""
+
+    required convenience init?(_ map: Map) {
+        self.init()
+    }
+
+    func mapping(map: Map) {
+        id    <- map["id"]
+        name  <- map["name"]
+        desc  <- map["desc"]
+    }
 
     override static func primaryKey() -> String? {
       return "id"
     }
 
-    class func createData(json: JSON) {
-         let todoList = TodoListModel()
-         todoList.id = json["id"].int!
-         todoList.name = json["name"].string!
-         todoList.desc = json["description"].string!
-
-         let realm = try! Realm()
-         try! realm.write {
-             realm.add(todoList, update: true)
+    class func createData(jsonDict: Dictionary<String, AnyObject>) {
+         guard let todoList = Mapper<TodoListModel>().map(jsonDict) else {
+             return
          }
+
+         do {
+             let realm = try Realm()
+             try realm.write {
+                 realm.add(todoList, update: true)
+             }
+         } catch {}
     }
 
     func getItems() -> Results<TodoItemModel> {

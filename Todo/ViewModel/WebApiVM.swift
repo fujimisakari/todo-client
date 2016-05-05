@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import SwiftTask
 
 
 func syncWithServer() {
@@ -18,20 +19,23 @@ func syncWithServer() {
                  // print(response.response) // URL response
                  // print(response.data)     // server data
                  // print(response.result)   // result of response serialization
-
                  // if let result_json = response.result.value {
                  //     print("JSON: \(result_json)")
                  // }
-                 guard let object = response.result.value else {
+
+                 guard let json = response.result.value as? Dictionary<String, Array<AnyObject>> else {
                      return
                  }
 
-                 let json = JSON(object)
-                 json["todolist_list"].forEach { (_, json) in
-                     TodoListModel.createData(json)
+                 json["todolist_list"]?.forEach { todoList in
+                     if let jsonDict = todoList as? Dictionary<String, AnyObject> {
+                        TodoListModel.createData(jsonDict)
+                     }
                  }
-                 json["todoitem_list"].forEach { (_, json) in
-                     TodoItemModel.createData(json)
+                 json["todoitem_list"]?.forEach { todoItem in
+                     if let jsonDict = todoItem as? Dictionary<String, AnyObject> {
+                        TodoItemModel.createData(jsonDict)
+                     }
                  }
              }
 }
