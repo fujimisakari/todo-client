@@ -1,4 +1,5 @@
 github "Alamofire/Alamofire" "3.3.1"
+github "Hearst-DD/ObjectMapper" "1.2.0"
 github "ReactKit/SwiftTask" "4.2.1"
 github "SwiftyJSON/SwiftyJSON" "2.3.3"
-github "realm/realm-cocoa" "v0.99.0"
+github "realm/realm-cocoa" "v0.100.0"
